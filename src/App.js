@@ -1,8 +1,13 @@
-import logo from './logo.svg'
 import './App.css'
+import Home from './Home/Home'
+import { BrowserRouter } from 'react-router-dom'
 
 function App () {
-  return <div className='App'></div>
+  return (
+    <BrowserRouter>
+      <Home />
+    </BrowserRouter>
+  )
 }
 
 export default App
