@@ -30,7 +30,7 @@ function Questionnaire() {
             <Card>
                 <div className = 'Questionnaire'>
                 <p>Questionnaire</p>
-                <q1>Please select the genres you would like to add to the queue.<br />
+                <p>Please select the genres you would like to add to the queue.</p>
                 <p>Genre: {selectedGenres.join(', ')}</p>
                 <Button value="Alternative" onClick={e => toggleGenre(e.target.value)}>Alternative</Button>
                 <Button value="Blues" onClick={e => toggleGenre(e.target.value)}>Blues</Button>
@@ -41,9 +41,8 @@ function Questionnaire() {
                 <Button value="Hip-hop" onClick={e => toggleGenre(e.target.value)}>Hip-hop</Button>
                 <Button value="Rock" onClick={e => toggleGenre(e.target.value)}>Rock</Button>
                 <Button value="Pop" onClick={e => toggleGenre(e.target.value)}>Pop</Button>
-                </q1>
                 <div>
-                    <button>Queue!</button>
+                    <Button>Queue!</Button>
                 </div>
                 </div>
 
