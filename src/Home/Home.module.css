@@ -13,4 +13,20 @@
     font-size: 1.2em;
     margin-bottom: 20px;
   }
-  
+
+  .Home img {
+    max-width: 20px;
+  }
+
+  .Home button2 {
+
+    max-width: 787.8px;
+  }
+
+  .SpotifyIcon {
+    width:100%;
+  }
+
+  .SpotifyIcon {
+    max-width:28px;
+  }

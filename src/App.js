@@ -1,4 +1,4 @@
-import './App.css'
+import styles from './App.module.css'
 import Home from './Home/Home'
 import { BrowserRouter } from 'react-router-dom'
 import logo from './Images/Spotify_Logo_RGB_Green.png';
@@ -8,9 +8,7 @@ function App () {
     <BrowserRouter>
 
       <Home />
-
-      <img src = {logo} className = "SpotifyLogo" alt = ""
-    style={{ width: '262.4px', height: '78.px' }}/>
+      <img src = {logo} id="SpotifyLogo" alt = ""/> 
     </BrowserRouter>
 
   )

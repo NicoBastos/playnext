@@ -1,4 +1,4 @@
-import './Queue.css'
+import styles from './Queue.module.css'
 import React, { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
 import { TokenContext } from '../../Home' // Import TokenContext
@@ -30,7 +30,7 @@ function Queue (props) {
   }, [])
   console.log(token)
   return (
-    <div className='Queue'>
+    <div className={styles.Queue}>
       This is the queue page
       <ul>
         {tracks.map((track, index) => (

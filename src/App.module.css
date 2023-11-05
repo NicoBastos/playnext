@@ -1,0 +1,52 @@
+/* App.css */
+
+@media screen and (max-width: 1080px) and (max-height: 2400px) {
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #191414;
+    color: #191414;
+    position: center;
+  }
+  
+  /* Center content in the middle of the page */
+  .App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: center;
+  }
+  
+  /* Style buttons */
+  button {
+    background-color: #1DB954;
+    color: white;
+    padding: 10px 20px;
+    border: black, 1px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #1DB954;
+  }
+  
+  button2 {
+  
+    background-color: white;
+    border-radius: 20px;
+    border-color: black, 1px;
+  }
+  
+  #SpotifyLogo {
+
+  }
+  #landing-title {
+    font-weight: 900px;
+  }
+  
+}

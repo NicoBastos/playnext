@@ -1,4 +1,4 @@
-import './Questionnaire.css'
+import styles from './Questionnaire.module.css'
 import { Route, Routes, Link } from 'react-router-dom'
 import React, { useState } from 'react'
 import { Button, ButtonGroup, Center, Card } from "@chakra-ui/react"
@@ -28,7 +28,7 @@ function Questionnaire() {
     return(
         <Center>
             <Card>
-                <div className = 'Questionnaire'>
+            <div className = {styles.Questionnaire}>
                 <p>Questionnaire</p>
                 <q1>Please select the genres you would like to add to the queue.<br />
                 <p>Genre: {selectedGenres.join(', ')}</p>

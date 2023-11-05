@@ -1,9 +1,10 @@
-import './Home.css'
+import styles from './Home.module.css'
 import React, { useState, useEffect, createContext } from 'react'
 import Queue from './Pages/Queue/Queue'
 import Questionnaire from './Pages/Questionnaire/Questionnaire'
 import { Routes, Route, Link } from 'react-router-dom'
 import icon from '../../src/Images/Spotify_Icon_RGB_Green.png';
+import logo from '../../src/Images/Spotify_Logo_RGB_Green.png';
 
 export const TokenContext = createContext(null) // Export TokenContext
 
@@ -36,8 +37,8 @@ function Home () {
   return (
 
     <>
-      <div className='Home'>
-        <p>Home page</p>
+      <div className={styles.Home}>
+        <div id='landing-title'>PlayNext</div>
         <Link to='/queue'>
           <button>Go to Queue</button>
         </Link>
@@ -47,8 +48,8 @@ function Home () {
         <a
           href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
         >
-          <button2> <img src = {icon} className = "SpotifyIcon" alt = ""
-    style={{ width: '25px', height: '25px' }}/>Login to Spotify</button2>
+          <div className={styles.parentTest}><img src = {logo} alt = ""/> </div>
+          <button2> <img src = {icon} className = "SpotifyIcon" alt = ""/>Login to Spotify</button2>
         </a>
         <TokenContext.Provider value={token}>
           <Routes>
