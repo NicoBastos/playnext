@@ -30,7 +30,7 @@ function Home () {
     }
 
     setToken(token)
-  }, [])
+  }, [  ])
 
   return (
 
@@ -39,6 +39,9 @@ function Home () {
         <p>Home page</p>
         <Link to='/queue'>
           <button>Go to Queue</button>
+        </Link>
+        <Link to='/questionnaire'>
+          <button>Go to Questionnaire</button>
         </Link>
         <button>Go to login</button>
         <a
@@ -49,7 +52,7 @@ function Home () {
         <TokenContext.Provider value={token}>
           <Routes>
             <Route path='/queue' element={<Queue />} />
-            <Route path = '/questionnaire' element = {<Questionnaire/>} />
+            <Route path = '/questionnaire' element = {<Questionnaire />} />
           </Routes>
         </TokenContext.Provider>
       </div>

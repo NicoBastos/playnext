@@ -27,7 +27,7 @@ function Queue (props) {
         console.error('Error fetching data:', error)
         setLoading(false)
       })
-  }, [props])
+  }, [])
   console.log(token)
   return (
     <div className='Queue'>
