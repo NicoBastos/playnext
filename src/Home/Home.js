@@ -3,6 +3,7 @@ import React, { useState, useEffect, createContext } from 'react'
 import Queue from './Pages/Queue/Queue'
 import Questionnaire from './Pages/Questionnaire/Questionnaire'
 import { Routes, Route, Link } from 'react-router-dom'
+import icon from '../../src/Images/Spotify_Icon_RGB_Green.png';
 
 export const TokenContext = createContext(null) // Export TokenContext
 
@@ -43,11 +44,11 @@ function Home () {
         <Link to='/questionnaire'>
           <button>Go to Questionnaire</button>
         </Link>
-        <button>Go to login</button>
         <a
           href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
         >
-          Login to Spotify
+          <button2> <img src = {icon} className = "SpotifyIcon" alt = ""
+    style={{ width: '25px', height: '25px' }}/>Login to Spotify</button2>
         </a>
         <TokenContext.Provider value={token}>
           <Routes>
