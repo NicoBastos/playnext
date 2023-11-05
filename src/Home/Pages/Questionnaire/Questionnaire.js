@@ -1,33 +1,54 @@
 import './Questionnaire.css'
 import { Route, Routes, Link } from 'react-router-dom'
-import React, { useState } from 'react';
-
+import React, { useState } from 'react'
+import { Button, ButtonGroup, Center, Card } from "@chakra-ui/react"
 
 
 function Questionnaire() {
-    const [genreOptions, setGenre] = useState('');
+    const [selectedGenres, setGenres] = useState([]);
 
+    const toggleGenre = (genre) => {
+        if (selectedGenres.includes(genre)) {
+            setGenres(selectedGenres.filter(item => item !== genre));
+        } else if (selectedGenres.length < 3) {
+            setGenres([...selectedGenres, genre]);
+        }
+    };
+
+    const buttonStyle = {
+        fontSize: "16px",
+        fontWeight: "bold",
+        backgroundColor: "blue.500",
+        color: "gray",
+        _hover: {
+            backgroundColor: "blue.600",
+        },
+    };
 
     return(
-        <div className = 'Questionnaire'>
-        <p>Questionnaire</p>
-        <q1>Please select the genres you would like to add to the queue.<br />
-        <p>Genre: {genreOptions}</p>
-        <select value={genreOptions} onChange={e => setGenre(e.target.value)}>
-            <option value="Alternative">Alternative</option>
-            <option value="Blues">Blues</option>
-            <option value="Classical">Classical</option>
-            <option value="Country">Country</option>
-            <option value="EDM">EDM</option>
-            <option value="Indie">Indie</option>
-            <option value="Hip-hop">Hip-hop</option>
-            <option value="Rock">Rock</option>
-            <option value="Pop">Pop</option>
-        </select>
+        <Center>
+            <Card>
+                <div className = 'Questionnaire'>
+                <p>Questionnaire</p>
+                <q1>Please select the genres you would like to add to the queue.<br />
+                <p>Genre: {selectedGenres.join(', ')}</p>
+                <Button value="Alternative" onClick={e => toggleGenre(e.target.value)}>Alternative</Button>
+                <Button value="Blues" onClick={e => toggleGenre(e.target.value)}>Blues</Button>
+                <Button value="Classical" onClick={e => toggleGenre(e.target.value)}>Classical</Button>
+                <Button value="Country" onClick={e => toggleGenre(e.target.value)}>Country</Button>
+                <Button value="EDM" onClick={e => toggleGenre(e.target.value)}>EDM</Button>
+                <Button value="Indie" onClick={e => toggleGenre(e.target.value)}>Indie</Button>
+                <Button value="Hip-hop" onClick={e => toggleGenre(e.target.value)}>Hip-hop</Button>
+                <Button value="Rock" onClick={e => toggleGenre(e.target.value)}>Rock</Button>
+                <Button value="Pop" onClick={e => toggleGenre(e.target.value)}>Pop</Button>
+                </q1>
+                <div>
+                    <button>Queue!</button>
+                </div>
+                </div>
 
-            (Press the 'all genres' button if you wish to select all genres.)
-        </q1>
-        </div>
+            </Card>
+        </Center>
     )
 }
 
