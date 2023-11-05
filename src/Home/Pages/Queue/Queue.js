@@ -12,10 +12,11 @@ function Queue (props) {
   useEffect(() => {
     const genres = [props.genres]
     let seedGenres = genres.length > 1 ? genres.join(',') : genres
+    console.log(seedGenres)
 
     axios
       .get('https://api.spotify.com/v1/recommendations', {
-        params: { seed_genres: seedGenres },
+        params: { seed_genres: "pop", limit: 5 },
         headers: { Authorization: `Bearer ${token}` } // Use token from context
       })
       .then(response => {
@@ -33,7 +34,7 @@ function Queue (props) {
       This is the queue page
       <ul>
         {tracks.map((track, index) => (
-          <li key={index}>{track.name}</li>
+          <li key={index}>{track.name} by {track.artists.name}</li>
         ))}
       </ul>
     </div>
