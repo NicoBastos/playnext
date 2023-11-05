@@ -32,6 +32,80 @@ function Home () {
     setToken(token)
   }, [  ])
 
+    // refresh token that has been previously stored
+    /*const refreshToken = localStorage.getItem('refresh_token');
+    const url = "https://accounts.spotify.com/api/token";
+ 
+     const payload = {
+       method: 'POST',
+       headers: {
+         'Content-Type': 'application/x-www-form-urlencoded'
+       },
+       body: new URLSearchParams({
+         grant_type: 'refresh_token',
+         refresh_token: refreshToken,
+         client_id: CLIENT_ID
+       }),
+     }
+     const body = await fetch(url, payload);
+     const response await body.json();
+ 
+     localStorage.setItem('access_token', response.accessToken);
+     localStorage.setItem('refresh_token', response.refreshToken);
+   } */
+   const getRefreshToken = async () => {
+    // Refresh token that has been previously stored
+    const refreshToken = localStorage.getItem('refresh_token');
+    const CLIENT_SECRET = '1c078e547c4c4835a86bf07e1702e9f1'; // Replace with your actual Spotify Client Secret
+    const url = 'https://accounts.spotify.com/api/token';
+  
+    const payload = new URLSearchParams();
+    payload.append('grant_type', 'refresh_token');
+    payload.append('refresh_token', refreshToken);
+  
+    try {
+      const response = await axios.post(url, payload, {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          Authorization: `Basic ${btoa(`${CLIENT_ID}:${CLIENT_SECRET}`)}`,
+        },
+      });
+  
+      const data = response.data;
+  
+      if (data.access_token) {
+        localStorage.setItem('token', data.access_token);
+        localStorage.setItem('refresh_token', data.refresh_token);
+        localStorage.setItem("expires", data.expires_in)
+      } else {
+        // Handle the case when the access token cannot be refreshed (e.g., user needs to re-authenticate)
+        console.error('Access token refresh failed.');
+      }
+    } catch (error) {
+      console.error('Error refreshing access token:', error);
+    }
+    token = localStorage.getItem("token")
+  }
+
+  const refreshTimer = () => {
+    const [time, setTime] = useState(localStorage.getItem("expires"))
+
+    useEffect(() => {
+      const remaining = setRemainingl(() => {
+        if (time > 0) {
+          setTime(time - 1)
+        }
+        else {
+          clearInterval(remaining)
+        }
+      }, 1000)
+
+      return () => {
+        clearInterval(remaining)
+      }
+    }, [time])
+  }
+
   return (
 
     <>
