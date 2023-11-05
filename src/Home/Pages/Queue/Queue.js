@@ -11,27 +11,31 @@ function Queue (props) {
   const [tracks, setTracks] = useState([])
   const [loading, setLoading] = useState(true)
   const token = useContext(TokenContext) // Use TokenContext
+  const [uri, setUri] = useState("")
 
   const handleButtonClick = () => {
-    setButtonPressed(true);
+    // setButtonPressed(true);
 
     for (let i = 0; i < 5; i++) {
-      makePostRequest();
+      makePostRequest(i);
     }
   };
 
-  const makePostRequest = () => {
-    axios.post('https://api.spotify.com/v1/me/player/queue', {
-        uris: [tracks.uri],
+  const makePostRequest = (i) => {
+    console.log("uri: ", uri[i].uri);
+    axios
+      .post('https://api.spotify.com/v1/me/player/queue', {
+        params: { uri: uri[i].uri },
+        headers: { Authorization: `Bearer ${token}` }
+        })
+      .then(response => {
+        // Handle the response data here
+        console.log("Track added to playlist: ", response.data);
       })
-    .then(response => {
-      // Handle the response data here
-      console.log("Track added to playlist: ", response.data);
-    })
-    .catch((error) => {
-      // Handle any errors that occurred during the request
-      console.error('Error:', error);
-    });
+      .catch((error) => {
+        // Handle any errors that occurred during the request
+        console.error('Error:', error);
+      })
   };
 
   useEffect(() => {
@@ -46,6 +50,7 @@ function Queue (props) {
       })
       .then(response => {
         setTracks(response.data.tracks) // Access tracks from response.data.tracks
+        setUri(response.data.tracks)
         setLoading(false)
       })
       .catch(error => {

@@ -43,9 +43,9 @@ function Home () {
         <Link to='/questionnaire'>
           <button>Go to Questionnaire</button>
         </Link>
-        <button>Go to login</button>
+        {/* <button>Go to login</button> */}
         <a
-          href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
+          href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${'user-modify-playback-state'}`}
         >
           Login to Spotify
         </a>
